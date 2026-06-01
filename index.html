@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cotizador Maddprint</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #111827, #1f2937);
+      color: #111827;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 36px;
+      margin-top: 30px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    }
+
+    .brand {
+      display: inline-block;
+      background: #111827;
+      color: #ffffff;
+      padding: 8px 14px;
+      border-radius: 100px;
+      font-size: 14px;
+      margin-bottom: 18px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: 42px;
+      line-height: 1.1;
+      margin-bottom: 14px;
+      color: #111827;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #4b5563;
+      max-width: 650px;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    .card {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 22px;
+      padding: 24px;
+      margin-top: 22px;
+    }
+
+    .card h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #111827;
+    }
+
+    .card p {
+      color: #4b5563;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #111827;
+    }
+
+    select,
+    input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid #d1d5db;
+      font-size: 16px;
+      background: #ffffff;
+    }
+
+    .button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 16px;
+      border: none;
+      border-radius: 16px;
+      background: #111827;
+      color: #ffffff;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: #000000;
+    }
+
+    .result {
+      margin-top: 22px;
+      padding: 20px;
+      border-radius: 18px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+    }
+
+    .result h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: 34px;
+      font-weight: bold;
+      color: #111827;
+      margin-top: 8px;
+    }
+
+    .warning {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 16px;
+      background: #fff7ed;
+      color: #9a3412;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .whatsapp {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 16px;
+      background: #22c55e;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    .footer {
+      color: #d1d5db;
+      text-align: center;
+      margin-top: 22px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        padding: 24px;
+        border-radius: 22px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .price {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <section class="hero">
+      <span class="brand">Maddprint</span>
+
+      <h1>Cotizá tu trabajo de sublimación</h1>
+
+      <p class="subtitle">
+        Elegí el servicio, colocá la cantidad y calculá un precio estimado.
+        Luego enviá tu consulta por WhatsApp para confirmar disponibilidad y tiempo de entrega.
+      </p>
+
+      <div class="card">
+        <h2>Cotizador rápido</h2>
+        <p>
+          Esta herramienta te ayuda a calcular un precio aproximado según el servicio que necesitás.
+        </p>
+
+        <div class="form-grid">
+          <div>
+            <label for="servicio">Servicio</label>
+            <select id="servicio">
+              <option value="1200" data-nombre="Solo impresión en papel 75gr" data-unidad="metros">Solo impresión en papel 75gr - $1.200 / metro</option>
+              <option value="1300" data-nombre="Impresión y calandrado de 1,60" data-unidad="metros">Impresión y calandrado de 1,60 - $1.300 / metro</option>
+              <option value="1400" data-nombre="Impresión y calandrado de 1,80" data-unidad="metros">Impresión y calandrado de 1,80 - $1.400 / metro</option>
+              <option value="3400" data-nombre="Impresión y calandrado tela set poliéster importado" data-unidad="metros">Tela set poliéster importado - $3.400 / metro</option>
+              <option value="4500" data-nombre="Impresión y calandrado tela keten importado" data-unidad="metros">Tela keten importado - $4.500 / metro</option>
+              <option value="5200" data-nombre="Impresión y calandrado tela spum importado" data-unidad="metros">Tela spum importado - $5.200 / metro</option>
+              <option value="250" data-nombre="Solo calandra" data-unidad="metros">Solo calandra - $250 / metro</option>
+              <option value="6500" data-nombre="Impresión DTF" data-unidad="metros">Impresión DTF - $6.500 / metro</option>
+              <option value="7500" data-nombre="Kilos de set" data-unidad="kilos">Kilos de set - $7.500 / kg</option>
+              <option value="9800" data-nombre="Kilos de spum" data-unidad="kilos">Kilos de spum - $9.800 / kg</option>
+              <option value="6000" data-nombre="Kilos de keten" data-unidad="kilos">Kilos de keten - $6.000 / kg</option>
+              <option value="7600" data-nombre="Rib cuellos" data-unidad="kilos">Rib cuellos - $7.600 / kg</option>
+              <option value="450" data-nombre="Corte láser" data-unidad="unidades">Corte láser - $450 / unidad</option>
+              <option value="7000" data-nombre="Diseños" data-unidad="unidades">Diseños - $7.000 / unidad</option>
+              <option value="7000" data-nombre="Escalados hasta 25 prendas" data-unidad="unidades">Escalados hasta 25 prendas - $7.000</option>
+              <option value="8000" data-nombre="Escalados hasta 40 prendas" data-unidad="unidades">Escalados hasta 40 prendas - $8.000</option>
+              <option value="9000" data-nombre="Escalados hasta 55 prendas" data-unidad="unidades">Escalados hasta 55 prendas - $9.000</option>
+              <option value="10000" data-nombre="Escalados hasta 70 prendas" data-unidad="unidades">Escalados hasta 70 prendas - $10.000</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="cantidad">Cantidad</label>
+            <input type="number" id="cantidad" placeholder="Ej: 20" min="1" />
+          </div>
+
+          <div>
+            <label for="pago">Forma de pago</label>
+            <select id="pago">
+              <option value="Efectivo">Efectivo</option>
+              <option value="Transferencia">Transferencia</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="button" onclick="calcular()">Calcular precio</button>
+
+        <div class="result" id="resultado" style="display: none;">
+          <h3>Resultado estimado</h3>
+          <p id="detalle"></p>
+          <div class="price" id="precioFinal"></div>
+
+          <div class="warning">
+            El precio mostrado es estimado y corresponde a pago en efectivo.
+            En caso de transferencia, puede aplicarse recargo.
+            La cotización final se confirma por WhatsApp según disponibilidad, archivo y tiempo de entrega.
+          </div>
+
+          <a href="#" class="whatsapp" id="botonWhatsapp" target="_blank">
+            Confirmar cotización por WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer">Maddprint · Cotizador de servicios textiles</p>
+  </div>
+
+  <script>
+    function calcular() {
+      const servicio = document.getElementById("servicio");
+      const cantidad = Number(document.getElementById("cantidad").value);
+      const pago = document.getElementById("pago").value;
+
+      const precioUnitario = Number(servicio.value);
+      const nombreServicio = servicio.options[servicio.selectedIndex].dataset.nombre;
+      const unidad = servicio.options[servicio.selectedIndex].dataset.unidad;
+
+      if (!cantidad || cantidad <= 0) {
+        alert("Por favor colocá una cantidad válida.");
+        return;
+      }
+
+      const total = precioUnitario * cantidad;
+
+      const totalFormateado = total.toLocaleString("es-AR");
+      const precioFormateado = precioUnitario.toLocaleString("es-AR");
+
+      document.getElementById("resultado").style.display = "block";
+
+      document.getElementById("detalle").innerHTML = `
+        Servicio: <strong>${nombreServicio}</strong><br>
+        Cantidad: <strong>${cantidad} ${unidad}</strong><br>
+        Precio unitario: <strong>$${precioFormateado}</strong><br>
+        Forma de pago: <strong>${pago}</strong>
+      `;
+
+      document.getElementById("precioFinal").innerText = `$${totalFormateado}`;
+
+      const telefono = "5491124626408";
+
+      const mensaje = `Hola Maddprint, quiero confirmar una cotización.
+
+Servicio: ${nombreServicio}
+Cantidad: ${cantidad} ${unidad}
+Precio unitario: $${precioFormateado}
+Total estimado en efectivo: $${totalFormateado}
+Forma de pago: ${pago}
+
+Entiendo que el precio es referencial y que, en caso de transferencia, puede aplicarse recargo.
+Quiero confirmar disponibilidad y tiempo de entrega.`;
+
+      const urlWhatsapp = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+      document.getElementById("botonWhatsapp").href = urlWhatsapp;
+    }
+  </script>
+</body>
+</html>
