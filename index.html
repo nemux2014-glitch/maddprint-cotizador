@@ -36,14 +36,16 @@
     .logo-box {
   display: flex;
   justify-content: center;
-  margin-bottom: 22px;
+  margin-bottom: 28px;
 }
 
 .logo {
-  width: 230px;
+  width: 330px;
   max-width: 100%;
   display: block;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.12));
 }
+
     
     .brand {
       display: inline-block;
@@ -119,18 +121,36 @@
       background: #ffffff;
     }
 
-    .button {
-      width: 100%;
-      margin-top: 20px;
-      padding: 16px;
-      border: none;
-      border-radius: 16px;
-      background: #111827;
-      color: #ffffff;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+   .button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 16px;
+  border: none;
+  border-radius: 16px;
+  background: #111827;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.calc-icon {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calc-icon svg {
+  width: 24px;
+  height: 24px;
+  color: #ffffff;
+}
 
     .button:hover {
       background: #000000;
@@ -152,11 +172,35 @@
 }
 
     #detalle {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
   color: #334155;
-  line-height: 1.9;
-  padding-bottom: 16px;
+  padding-bottom: 18px;
   border-bottom: 1px solid #e5e7eb;
   margin-bottom: 14px;
+}
+
+.detalle-item {
+  padding-right: 14px;
+  border-right: 1px solid #e5e7eb;
+}
+
+.detalle-item:last-child {
+  border-right: none;
+}
+
+.detalle-item span {
+  display: block;
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 5px;
+}
+
+.detalle-item strong {
+  display: block;
+  font-size: 15px;
+  color: #07152f;
 }
     .price {
   font-size: 44px;
@@ -166,25 +210,30 @@
   text-align: right;
 }
 
-    .warning {
+   .warning {
   margin-top: 18px;
-  padding: 18px 20px;
-  border-radius: 18px;
-  background: #fff7df;
-  color: #7c4a03;
-  font-size: 15px;
-  line-height: 1.6;
-  border: 1px solid #ffd166;
+  padding: 18px 22px;
+  border-radius: 14px;
+  background: #fff8e6;
+  color: #5c3b00;
+  font-size: 16px;
+  line-height: 1.5;
+  border: 1px solid #f5c451;
   display: flex;
-  gap: 12px;
-  align-items: flex-start;
+  gap: 16px;
+  align-items: center;
+  box-shadow: 0 8px 18px rgba(245, 196, 81, 0.18);
 }
 
-.warning::before {
-  content: "⚠️";
-  font-size: 22px;
+.warning-icon {
+  font-size: 38px;
   line-height: 1;
   flex-shrink: 0;
+}
+
+.warning strong {
+  font-weight: 900;
+  color: #2f2500;
 }
 
   .whatsapp {
@@ -250,6 +299,17 @@
         border-radius: 22px;
       }
 
+      #detalle {
+  grid-template-columns: 1fr 1fr;
+}
+
+.detalle-item {
+  border-right: none;
+}
+      .logo {
+  width: 260px;
+}
+      
       h1 {
         font-size: 32px;
       }
@@ -328,7 +388,14 @@
           </div>
         </div>
 
-        <button class="button" onclick="calcular()">Calcular precio</button>
+        <button class="button" onclick="calcular()">
+  <span class="calc-icon">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm0 2v4h10V4H7Zm2 7a1.2 1.2 0 1 0 0 2.4A1.2 1.2 0 0 0 9 11Zm4 0a1.2 1.2 0 1 0 0 2.4A1.2 1.2 0 0 0 13 11Zm4 0a1.2 1.2 0 1 0 0 2.4A1.2 1.2 0 0 0 17 11Zm-8 4a1.2 1.2 0 1 0 0 2.4A1.2 1.2 0 0 0 9 15Zm4 0a1.2 1.2 0 1 0 0 2.4A1.2 1.2 0 0 0 13 15Zm4 0a1.2 1.2 0 1 0 0 2.4A1.2 1.2 0 0 0 17 15Z"/>
+    </svg>
+  </span>
+  <span>Calcular precio</span>
+</button>
 
         <div class="result" id="resultado" style="display: none;">
           <h3>Resultado estimado</h3>
@@ -336,10 +403,12 @@
           <div class="price" id="precioFinal"></div>
 
           <div class="warning">
-            El precio mostrado es estimado y corresponde a pago en efectivo.
-            En caso de transferencia, puede aplicarse recargo.
-            La cotización final se confirma por WhatsApp según disponibilidad, archivo y tiempo de entrega.
-          </div>
+  <span class="warning-icon">⚠️</span>
+  <span>
+    El precio mostrado es estimado y corresponde a <strong>pago en efectivo</strong>.<br>
+    Si elegís transferencia, el total <strong>puede incluir un recargo</strong>.
+  </span>
+</div>
 
           <a href="#" class="whatsapp" id="botonWhatsapp" target="_blank">
   <span class="wpp-icon">
@@ -381,11 +450,26 @@
       document.getElementById("resultado").style.display = "block";
 
       document.getElementById("detalle").innerHTML = `
-        Servicio: <strong>${nombreServicio}</strong><br>
-        Cantidad: <strong>${cantidad} ${unidad}</strong><br>
-        Precio unitario: <strong>$${precioFormateado}</strong><br>
-        Forma de pago: <strong>${pago}</strong>
-      `;
+  <div class="detalle-item">
+    <span>Servicio</span>
+    <strong>${nombreServicio}</strong>
+  </div>
+
+  <div class="detalle-item">
+    <span>Cantidad</span>
+    <strong>${cantidad} ${unidad}</strong>
+  </div>
+
+  <div class="detalle-item">
+    <span>Precio unitario</span>
+    <strong>$${precioFormateado}</strong>
+  </div>
+
+  <div class="detalle-item">
+    <span>Forma de pago</span>
+    <strong>${pago}</strong>
+  </div>
+`;
 
       document.getElementById("precioFinal").innerText = `$${totalFormateado}`;
 
